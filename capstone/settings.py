@@ -29,7 +29,7 @@ SECRET_KEY = '6a*4b2-_iiz0#n!_0)&#@1_87^i0toio$i8_2*7it#263pe76t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yourmindmapp.herokuapp.com']
 
 
 # Application definition
