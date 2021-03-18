@@ -1,0 +1,259 @@
+{% extends "MindmApp/layout.html" %}
+{% load static %}
+{% block body %}
+
+
+  <!--/////////// CSS for registration/login page ////////////-->
+  <link rel="stylesheet" href="{% static 'MindmApp/index.css' %}">
+
+
+<!-- below are warnings or messages that are only visible if triggered -->
+  <p id="paragraph" style="text-align: center;">{{warning}}</p>
+  <p id="messageId" style="text-align: center;">{{message}}</p>
+
+  <div id="app">
+  </div>
+
+
+<!-- below is react for login/register page -->
+  <script>
+
+//in react, every html element must have a closing tag, e.g. not <input> but <input />
+        //////////////////////////////////////////////////////////
+        //////////////////////App Component///////////////////////
+        //////////////////////////////////////////////////////////
+
+
+
+        "use strict";
+
+      function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+      class App extends React.Component {
+        constructor(...args) {
+          super(...args);
+
+          _defineProperty(this, "state", {
+            whatState: '',
+            showLogin: true,
+            showRegister: true,
+            registerMargin: true
+          });
+        }
+
+        //////////////////////////////////////////////////////////
+        /////////// render() function of App Component////////////
+        render() {
+          ////////////change margin of register button //////////////
+          if (this.state.showLogin == false && this.state.showRegister == true) {
+            if (document.getElementById("hideRegister")) {
+              document.getElementById("hideRegister").style.margin = "0px 0px 0px 0px";
+            }
+          }
+
+          var showLogin = this.state.showLogin;
+          var showRegister = this.state.showRegister; //////////If statement to show/hide buttons/////////////
+
+          // When the user clicks login to go to the login form
+          if (showLogin) {
+            var buttonLogin = /*#__PURE__*/React.createElement("button", {
+              class: "btn btn-primary purpleLogins",
+              onClick: e => this.setState({
+                whatState: e.target.name,
+                showLogin: false,
+                showRegister: true,
+                registerMargin: false
+              }),
+              name: "login",
+              id: "hideLogin"
+            }, "Login");
+          } else {}
+
+          // When the user clicks register to go to the register form
+          if (showRegister) {
+            var buttonRegister = /*#__PURE__*/React.createElement("button", {
+              class: "btn btn-primary purpleLogins",
+              onClick: e => this.setState({
+                whatState: e.target.name,
+                showRegister: false,
+                showLogin: true
+              }),
+              name: "register",
+              id: "hideRegister"
+            }, "Register");
+          } //////////////////////////////////////////////////////////
+          //////////////////////APP RETURN /////////////////////////
+
+
+          return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+            id: "buttonDiv"
+          }, buttonLogin, buttonRegister, this.state.problem, this.handleLog(this.state.whatState)));
+        } //////////////////////////////////////////////////////////
+        /////////////////APP FUNCTION handleLog///////////////////
+
+
+        handleLog(whatState) {
+          if (whatState == "login") return /*#__PURE__*/React.createElement(LoginView, null);
+          if (whatState == "register") return /*#__PURE__*/React.createElement(RegView, null);
+        }
+
+      } //////////////////////////////////////////////////////////
+      ////////////////////RegView Component/////////////////////
+      //////////////////////////////////////////////////////////
+
+      class RegView extends React.Component {
+        constructor(...args) {
+          super(...args);
+
+          _defineProperty(this, "state", {
+            registered: false,
+            bePatient: ""
+          });
+        }
+
+        render() {
+
+          // get Cross-Site Request Forgery token
+          var csrftokenregister = "{{ csrf_token }}";
+          // create react element to pass into form as csrf csrfToken
+          // var instead of const is used instead, in order to reload CSRF token on page refresh
+          var csrfTokenRegister = React.createElement("input", {
+            type: "hidden",
+            name: "csrfmiddlewaretoken",
+            value: csrftokenregister
+          })
+
+          var registerButton = /*#__PURE__*/React.createElement("input", {
+            class: "btn btn-outline-success purpleLogin",
+            type: "submit",
+            value: "Register",
+            onClick: e => this.setState({
+              registered: true,
+              bePatient: alert("Please be patient, this might take a couple seconds...")
+            })
+          });
+
+
+          return (
+            /*#__PURE__*/
+            //↓↓↓↓↓↓↓↓ HTML code for Register Form ↓↓↓↓↓↓↓↓\\
+            React.createElement("div", {
+              id: "registerFormDiv"
+            }, this.state.bePatient, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("form", {
+              id: "registerForm",
+              method: "post",
+              action: "{% url 'MindmApp:register' %}"
+            },csrfTokenRegister, /*#__PURE__*/React.createElement("div", {
+              class: "form-group"
+            }, /*#__PURE__*/React.createElement("input", {
+              class: "form-control loginPasswordInput",
+              autofocus: true,
+              type: "text",
+              name: "username",
+              placeholder: "Username",
+              id: "registerUsernameInput"
+            })), /*#__PURE__*/React.createElement("div", {
+              class: "form-group"
+            }, /*#__PURE__*/React.createElement("input", {
+              class: "form-control loginPasswordInput",
+              type: "email",
+              name: "email",
+              placeholder: "Email Address",
+              id: "registerEmailInput"
+            })), /*#__PURE__*/React.createElement("div", {
+              class: "form-group"
+            }, /*#__PURE__*/React.createElement("input", {
+              class: "form-control loginPasswordInput",
+              type: "password",
+              name: "password",
+              placeholder: "Password",
+              id: "registerPasswordInput"
+            })), /*#__PURE__*/React.createElement("div", {
+              class: "form-group"
+            }, /*#__PURE__*/React.createElement("input", {
+              class: "form-control loginPasswordInput",
+              type: "password",
+              name: "confirmation",
+              placeholder: "Confirm Password",
+              id: "registerConfirmationInput"
+            })), registerButton))
+          );
+        }
+
+      } //////////////////////////////////////////////////////////
+      ////////////////////LoginView Component///////////////////
+      //////////////////////////////////////////////////////////
+
+
+      class LoginView extends React.Component {
+        constructor(...args) {
+          super(...args);
+
+          _defineProperty(this, "state", {
+            loggedIn: false
+          });
+        }
+
+        render() {
+
+          // csrf token for security reasons
+          var csrftoken = "{{ csrf_token }}";
+          var csrfToken = React.createElement("input", {
+            type: "hidden",
+            name: "csrfmiddlewaretoken",
+            value: csrftoken
+          })
+
+          // functionality of login button
+          var logginButton = /*#__PURE__*/React.createElement("input", {
+            class: "btn btn-outline-success purpleLogin",
+            type: "submit",
+            value: "Login",
+            onClick: e => this.setState({
+              loggedIn: true
+            })
+          });
+
+
+          // render html for login form
+          return /*#__PURE__*/React.createElement("div", {
+            id: "loginFormDiv"
+          }, /*#__PURE__*/React.createElement("form", {
+            id: "loginForm",
+            method: "post",
+            id: "formMarginTop",
+            action: "{% url 'MindmApp:login' %}"
+          },csrfToken, /*#__PURE__*/React.createElement("p", {
+            id: "showError"
+          }), /*#__PURE__*/React.createElement("div", {
+            class: "form-group"
+          }, /*#__PURE__*/React.createElement("input", {
+            autofocus: true,
+            class: "form-control loginPasswordInput",
+            type: "text",
+            name: "username",
+            placeholder: "Username",
+            id: "loginUsernameInput"
+          })), /*#__PURE__*/React.createElement("div", {
+            class: "form-group"
+          }, /*#__PURE__*/React.createElement("input", {
+            class: "form-control loginPasswordInput",
+            type: "password",
+            name: "password",
+            placeholder: "Password",
+            id: "loginPasswordInput"
+          })), logginButton));
+        }
+
+      } //////////////////////////////////////////////////////////
+      ////////////// USED TO RENDER ENTIRE PAGE ////////////////
+
+
+      ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.querySelector("#app"));
+
+  </script>
+
+<!-- copyright -->
+<p style="position: fixed; color: white; bottom: 0; right: 0; margin-right: 2px; font-size: 12px; margin-bottom: 0px;" id="copyright">© Jonathon Durno 2021</p>
+
+{% endblock %}
