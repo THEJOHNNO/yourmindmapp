@@ -105,11 +105,14 @@ def register_view(request):
 def main_view(request):
     user = request.user
 
+    # get static subfolders
+    STATIC_SUBFOLDER = os.path.join(settings.BASE_DIR, "MindmApp/static/MindmApp/media")
     #get list of images from django media folder (declared in settings.py)
     lst=[]
-    for root, dirs, files in os.walk(settings.MEDIA_ROOT):
+    for root, dirs, files in os.walk(STATIC_SUBFOLDER):
         for file in files:
             lst.append(file)
+
 
     # remove image extension from text to view in dropdown menu
     image_list = [os.path.splitext(x)[0] for x in lst]

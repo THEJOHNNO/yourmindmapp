@@ -29,7 +29,8 @@ SECRET_KEY = '6a*4b2-_iiz0#n!_0)&#@1_87^i0toio$i8_2*7it#263pe76t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourmindmapp.herokuapp.com']
+# ALLOWED_HOSTS = ['yourmindmapp.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -126,22 +127,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT  =   os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'staticfiles'),
+
 )
-
-#  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-
-# media (images for MindmApp) directory
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-# media url
-MEDIA_URL = '/media/'
 
 import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)

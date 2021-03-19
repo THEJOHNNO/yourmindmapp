@@ -24,9 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("MindmApp.urls"))
 ]
-
-# the following should be in the main project urls.py file.
-# the following links the root/media folder for image files
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
