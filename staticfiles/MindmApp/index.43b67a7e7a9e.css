@@ -1,0 +1,125 @@
+/* background image for login page */
+  body {
+    background-image: url("login_background_portrait.f7de9a14badf.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+/* position register and login buttons buttons/forms */
+#hideRegister {
+  margin-left: 10px;
+}
+#buttonDiv {
+ padding: 10px;
+}
+#registerFormDiv {
+ margin-top: 15px;
+}
+#formMarginTop {
+ margin-top: 15px;
+}
+
+#buttonDiv {
+ text-align: center;
+ margin-top: 10%;
+}
+
+/* if screen is bigger than 450 px wide (small phone), make the forms bigger */
+@media only screen and (min-width: 450px) {
+ #registerFormDiv {
+   margin-left: 50px;
+   margin-right: 50px;
+ }
+ #loginFormDiv {
+   margin-left: 50px;
+   margin-right: 50px;
+ }
+}
+#copyright::first-letter {
+  font-size: 15px;
+}
+
+/* make login and regiter buttons pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+  }
+
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+  }
+}
+
+/* style both the login and register buttons */
+.purpleLogin {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+
+  background-color: #9400D3;
+  color: white;
+  border-color: #9400D3;
+  animation-duration: 2s;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+}
+.purpleLogin:hover {
+  background-color: #9400D3;
+  border-color: #9400D3;
+}
+.loginPasswordInput {
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+}
+.loginPasswordInput:hover {
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+}
+.loginPasswordInput:not( :hover ){
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+}
+
+.loginPasswordInput::placeholder {
+  color: white;
+}
+
+.purpleLogins:hover {
+  transition: 0.5s;
+  background-color: #9400D3;
+  color: white;
+  border-color: #9400D3;
+}
+
+/* style the notification */
+#paragraph {
+  width: 15%;
+  margin-left: 42%;
+  border-radius: 25px;
+  border: 2px solid rgba(0,0,0,0.0);
+  background-color: rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 4px rgb(61, 61, 61);
+
+  color: #FF0000;
+  margin-top: 10px;
+}
+#paragraph:empty {
+  display: none;
+}
+
+#messageId {
+  color: rgb(201, 201, 201);
+}
+
+/* ReactDom render Div for login/register page */
+#app {
+  margin-top: 115px;
+}

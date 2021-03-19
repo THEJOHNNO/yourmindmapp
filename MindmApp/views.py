@@ -106,16 +106,18 @@ def main_view(request):
     user = request.user
 
     # get static subfolders
-    STATIC_SUBFOLDER = os.path.join(settings.BASE_DIR, "MindmApp/static/MindmApp/media")
+    STATIC_SUBFOLDER = os.path.join(settings.BASE_DIR, "staticfiles/MindmApp//media")
     #get list of images from django media folder (declared in settings.py)
-    lst=[]
+
+    image_list =[]
     for root, dirs, files in os.walk(STATIC_SUBFOLDER):
         for file in files:
-            lst.append(file)
+            image_list.append(file.split('.')[0])
 
 
+    image_list = list(set(image_list))
     # remove image extension from text to view in dropdown menu
-    image_list = [os.path.splitext(x)[0] for x in lst]
+    # image_list = [os.path.splitext(x)[0] for x in lst]
 
     #return list of images to show in dropdown menu's in main app (main.html)
     return render(request, "MindmApp/main.html", {

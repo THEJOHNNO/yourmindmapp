@@ -1,0 +1,615 @@
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(219, 219, 219);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(189, 189, 189);
+  border-radius: 10px;
+}
+@keyframes fadeIn {
+  0% {
+    background: rgb(165, 165, 165);
+  }
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(155, 155, 155);
+  animation-duration: 0.5s;
+  animation-direction: forwards;
+  animation-iteration-count: 1;
+  animation-name: fadeIn;
+}
+
+
+/* if screen is smaller than x width, align elements like so */
+@media only screen and (max-width: 574px) {
+  #searchId {
+    width: 250px;
+  }
+  #searchButtonId {
+    margin-left: 10px;
+  }
+
+}
+
+/* if screen is smaller than x width, align elements like so */
+@media only screen and (max-width: 364px) {
+  #searchId {
+    width: 200px;
+  }
+}
+
+/* if screen is smaller than x width, align elements like so */
+@media only screen and (max-width: 314px) {
+  #searchId {
+    width: 150px;
+  }
+}
+
+/* if screen is bigger than x width, align elements like so */
+@media only screen and (min-width: 992px) {
+  #logoutButton {
+    margin-left: 10px;
+  }
+}
+
+/* animation to make neuron flash */
+@keyframes neuronFlare {
+  0% {
+    fill: #ffffff;
+  }
+  15% {
+    fill: #c3e1f5;
+   }
+  30% {
+    fill: #8dd1ff;
+  }
+  96% {
+    fill: #c3e1f5;
+  }
+  96% {
+    fill: #ffffff;
+  }
+}
+.central:hover {
+  animation-name: neuronFlare;
+  animation-duration: 1s;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+}
+
+/* if screen is bigger than x width, align elements like so */
+@media only screen and (min-width: 1280px) {
+  #n5Text {
+    margin-left: 200px;
+    margin-top: 280px;
+  }
+  #n5Text {
+    margin-left: 165px;
+    margin-top: 245px;
+  }
+
+}
+
+/* if screen is bigger than x width, align elements like so: */
+@media only screen and (min-width: 1440px) {
+
+
+  #n5Text {
+    margin-left: 200px;
+    margin-top: 280px;
+  }
+}
+
+/* if device ix x width and x height, align elements like so: */
+@media (width: 375px) and (height: 667px) {
+
+  #navbarId {
+    width: 500px;
+  }
+
+  .imageDropdown .chosenImage {
+    display: none;
+  }
+
+/* if mobile device is portrait, flash warning to ask user to flip device landscape */
+@keyframes pulseWarning {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Define portrait mobile orientation warning */
+  #screenPortraitWarning {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 51;
+    animation-name: pulseWarning;
+    animation-duration: 1s;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+  }
+}
+
+/* if device ix smaller than x width and x height, align elements like so: */
+@media (max-width: 812px) and (max-height: 375px) {
+  svg {
+    margin-left: 0%;
+  }
+
+  #n5Text {
+    margin-left: 40px;
+    margin-top: 185px;
+  }
+  #nFirst_dropdown .selectedImage {
+      margin-top: -120px;
+      margin-left: -100px;
+  }
+  #n4_dropdown .selectedImage {
+      margin-left: -50px;
+  }
+  #n9_dropdown .selectedImage {
+      margin-top: -200px;
+  }
+  #n10_dropdown .selectedImage {
+      margin-top: -150px;
+      margin-left: -50px;
+  }
+  #n12_dropdown .selectedImage {
+      margin-left: -70px;
+      margin-top: -200px;
+  }
+  #nFirst_dropdown .selectedImage ul {
+    height: 175px;
+  }
+  #nFirst_dropdown .selectedImage ul li {
+    height: 40px;
+  }
+  #nFirst_dropdown .selectedImage ul li img {
+    height: 40px;
+    width:40px;
+    padding: 2px;
+  }
+  #nFirst_dropdown .selectedImage ul li a {
+    height: 50px;
+    padding: 2px;
+  }
+  #n2_dropdown .selectedImage {
+    margin-left:-10px;
+    margin-top: -180px;
+  }
+  #n3_dropdown .selectedImage ul {
+    height: 175px;
+  }
+  #n3_dropdown .selectedImage ul li {
+    height: 40px;
+    margin-top: 1px;
+  }
+  #n3_dropdown .selectedImage ul li img {
+    height: 40px;
+    width:40px;
+    padding: 2px;
+  }
+  #n3_dropdown .selectedImage ul li a {
+    height: 10px;
+    padding: 2px;
+  }
+  #n3_dropdown .selectedImage {
+    margin-top: -130px;
+  }
+  #n6_dropdown .selectedImage {
+    margin-top: -200px;
+  }
+  #n8_dropdown .selectedImage {
+    margin-top: -225px;
+  }
+  #n7_dropdown .selectedImage {
+    margin-left: -30px;
+    margin-top: -220px;
+  }
+}
+
+.nodepoint {
+  opacity: 0;
+  fill: rgb(237, 237, 237);
+}
+
+/* if textarea positioning box does show, animate smooth transition */
+@keyframes nodePointOpacityChange {
+  0% {
+    opacity: 0.1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.nodepoint:hover {
+  animation-name: nodePointOpacityChange;
+  animation-duration:0.1s;
+  animation-fill-mode: forwards;
+}
+svg {
+  position: absolute;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+/* fade page in */
+@keyframes fadeInPage {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.everythingElse {
+  animation-name: fadeInPage;
+  animation-duration: 5s;
+  animation-direction: forwards;
+  animation-iteration-count: 1;
+}
+
+/* specify font for app */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/*//////////////////////////////
+////// Image dropdown CSS //////
+//////////////////////////////*/
+.imageDropdown {
+  text-align: right;
+  font-weight: bold;
+  position: absolute;
+  z-index: 3;
+}
+.imageDropdown .selectedImage {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2;
+  position: absolute;
+  cursor: pointer;
+  margin-top: -170px;
+}
+
+.imageDropdown .chosenImage {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  z-index: 1;
+}
+.imageInside {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.imageDropdown ul {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #f8f8f8;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+  max-height: 200px;
+  overflow: auto;
+}
+
+
+.imageDropdown ul li {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.imageDropdown ul li a {
+  text-decoration: none;
+  width: 100px;
+  padding: 5px 10px;
+  display: block;
+  color: black;
+  font-weight: 100;
+  margin-top: 10px;
+  position: relative;
+}
+.imageDropdown ul li .imageForDropdown {
+  width: 50px;
+  height: 50px;
+  content: '';
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.imageDropdown ul li:hover {
+  background-color: #f2f2f2;
+  position: relative;
+  z-index: 5;
+}
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.imageDropdown:hover ul {
+  position: relative;
+  display: block;
+  z-index: 5;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: forwards;
+  animation-name: fadeInDropdown;
+}
+svg {
+  width: 82%;
+  height: auto;
+  margin-left: 9%;
+}
+
+.nodepointTextarea {
+  overflow: hidden;
+  color: rgb(129, 129, 129);
+}
+.nodepointTextarea:hover {
+  overflow:hidden;
+  color: rgb(71, 71, 71);
+}
+
+/* if device is landscape, do the following*/
+@media screen and (orientation:landscape) {
+  #screenPortraitWarning {
+    display: none;
+  }
+}
+#n11_dropdown .selectedImage {
+  margin-top: -220px;
+}
+
+/* if device is smaller than x width and x height, align elements like so: */
+@media (max-width: 1024px) and (max-height: 768px) {
+  #nFirst_dropdown .selectedImage {
+    margin-left: -60px;
+    margin-top: -120px;
+    height: 200px;
+  }
+  #nFirst_dropdown .selectedImage ul{
+    height: 175px;
+  }
+  #nFirst_dropdown .selectedImage ul li{
+    height: 50px;
+  }
+  #nFirst_dropdown .selectedImage ul li img{
+    height: 40px;
+    width: 40px;
+    margin-top: 3px;
+  }
+  #nFirst_dropdown .selectedImage ul li a{
+      margin-top: 2px;
+  }
+  #n7_dropdown .selectedImage {
+    margin-left: -30px;
+  }
+  #n8_dropdown .selectedImage {
+    margin-left: -65px;
+  }
+}
+
+#nCenter_dropdown .selectedImage ul {
+  max-height: 260px;
+  overflow: auto;
+}
+#n2_dropdown .chosenImage{
+  margin-top: 20px;
+}
+
+/* if device is smaller than x width and x height, align elements like so: */
+@media screen and (max-width: 667px) {
+  #n2_dropdown .chosenImage{
+    margin-top: 10px;
+  }
+}
+
+/* zoom button styling */
+.zoom {
+  bottom: 190px;
+  margin-left: 20%;
+
+}
+
+.zoom-out {
+  margin-left: 20%;
+}
+.pulseZoom1 {
+  transition: opacity 0.5s;
+  opacity: 0.9;
+}
+.pulseZoom2 {
+  transition: opacity 0.5s;
+  opacity: 0.9;
+}
+
+/* animation when zoom button is hovered over */
+.pulseZoom1:hover {
+    border-radius: 50px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  	transform: scale(1);
+    animation-duration: 2s;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+    animation-name: pulse;
+    cursor: pointer;
+}
+/* animation when zoom-out button is hovered over */
+.pulseZoom2:hover {
+  border-radius: 50px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+  animation-duration: 2s;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+  cursor: pointer;
+}
+
+/* animation for zoom button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 18px rgba(52, 172, 224, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+  }
+}
+
+/* when zoom button is clicked */
+.pulseZoom2:active {
+  opacity: 0.5;
+  transition:0s;
+}
+.pulseZoom1:active {
+  opacity: 0.5;
+  transition:0s;
+}
+/* make sure zoom button actually shows */
+#zoomThis {
+  z-index: 20;
+}
+
+
+
+/* fade in the modal (How-To) */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  11% {
+    opacity: 90%;
+  }
+  15% {
+    opacity: 95%;
+  }
+  18% {
+    opacity: 97%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+/* modal (How-To) styling */
+.modal {
+  animation: fadeIn;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+  animation-direction: forwards;
+}
+
+/* modal list item positioning */
+.listClass {
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 10px;
+  margin-top: 12px;
+}
+
+/* copyright styling */
+#copyright::first-letter {
+  font-size: 15px;
+}
+
+/* when screen is mobile, do this... */
+@media screen and (max-width: 819px) {
+  #copyright {
+    font-size: 2px;
+  }
+  #nameDiv {
+    margin-top: 1.4%;
+  }
+}
+/* when screen is bigger than mobile, do this... */
+@media screen and (min-width: 819px) {
+  #nameDiv {
+    margin-top: 0.8%;
+  }
+}
+
+/* align portrait warning center of device */
+#screenPortraitWarningDiv {
+  text-align: center;
+}
+/*styling and position for mindmap name */
+#nameDiv {
+  display: flex;
+  justify-content: center;
+  width: 80%; position:
+  absolute; z-index: 4;
+  margin-left: 10%;
+  margin-right: 10%;
+}
