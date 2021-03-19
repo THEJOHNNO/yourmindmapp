@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
-EMAIL_HOST_USER = OS.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -142,5 +142,5 @@ STATICFILES_DIRS = (
 )
 
 import dj_database_url
-prod_db  =  dj_database_url.config(conn_max_age=500)
+db_from_env  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
