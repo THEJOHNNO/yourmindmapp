@@ -6,3 +6,5 @@ from .models import *
 admin.site.register(CustomUser)
 admin.site.register(UserTextArea)
 admin.site.register(UserImages)
+admin.site.register(MindMapName)
+admin.site.register(CustomUserManager)
